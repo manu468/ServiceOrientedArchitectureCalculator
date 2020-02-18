@@ -1,0 +1,29 @@
+SOA services should be independent of other services.
+Altering a service should not affect the client calling the service.
+Services should be able to define themselves (in the Web Service Description Languatge (WSDL))
+Services should be able to describe what they do. It should be able to tell the client what all of the operations it does, 
+what are all the data types it uses and what kind of value it will return.
+ Web services use open standards and protocols like HTTP, XML and SOAP
+ 
+ [WebMethod] attribute -Attaching the WebMethod attribute to a Public method indicates that you want the method exposed as 
+ part of the XML Web service.
+ Any method marked with the WebMethod attribute must be defined as public. 
+ 
+ <h6>Some points to remember</h6>
+ Hyper Text Transfer Protocol (HTTP) is the protocol widely used by web services to send and receive messages.
+ 
+The messaging is done usinig the Simple Object Access Protocol (SOAP). SOAP messages are in XML format.
+(SOAP is a standardized protocol that sends messages using other protocols such as HTTP)
+--What is WSDL and what is it's purpose? How is a proxy class generated? What is the use of a proxy class?
+What actually happens when a web service reference is added?
+
+Visual Studio generates a proxy class using the Web Service Description Language (WSDL) document of the web service.
+The WSDL document formally defines a web service. It contains:
+-All the methods that are exposed by the web service
+-the parameters and their types
+-The return types of the methods
+This information is then used by Visual Studio to create the proxy class. The client application calls the proxy class method.
+The proxy class will then serialize the parameters, prepare a SOAP request message and send it to the web service
+The web service executes the method and returns a SOAP response message to the proxy
+The proxy class will then deserialize the SOAP response message and hand it the client application.
+We don't need to serialize or deserialize .Net CLR objects to and from SOAP format. The proxy class takes care of serialization and deserialization
